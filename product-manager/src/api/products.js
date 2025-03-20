@@ -1,7 +1,7 @@
 // src/api/products.js
 const API_URL = process.env.REACT_APP_API_URL; // Используем переменную из .env
 
-export const fetchProducts = async () => {
+export const Products = async () => {
   try {
     const response = await fetch(`${API_URL}/products`);
     if (!response.ok) {
