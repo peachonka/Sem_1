@@ -1,17 +1,16 @@
-// Базовый URL для mock API (json-server)
-const API_URL = 'http://localhost:3001/products';
+// src/api/products.js
+const API_URL = process.env.REACT_APP_API_URL; // Используем переменную из .env
 
-// Функция для загрузки товаров
-export const Products = async () => {
+export const fetchProducts = async () => {
   try {
-    const response = await fetch(API_URL); // Используем fetch вместо axios
+    const response = await fetch(`${API_URL}/products`);
     if (!response.ok) {
       throw new Error('Ошибка при загрузке товаров');
     }
-    const data = await response.json(); // Парсим JSON-ответ
-    return data; // Возвращаем данные товаров
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error('Ошибка при загрузке товаров:', error);
-    throw error; // Пробрасываем ошибку, чтобы обработать её в компоненте
+    throw error;
   }
 };
